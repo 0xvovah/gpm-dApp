@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+
+body {
+    color: rgb(var(--foreground-rgb));
+    /* background: linear-gradient(to bottom,
+            transparent,
+            rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)); */
+    --sb-track-color: #232e33;
+    --sb-thumb-color: #081313;
+    --sb-size: 3px;
+
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+}
+
+@keyframes radialGradientAnimation {
+    0% {
+        background-position: center top;
+    }
+
+    100% {
+        background-position: center bottom;
+    }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+::-webkit-scrollbar {
+    width: var(--sb-size);
+    height: var(--sb-size);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background: var(--sb-thumb-color);
+    border-radius: 5px;
+}
+
+@layer utilities {
+
+    /* Hide the scrollbar in webkit-based browsers */
+    .hideScrollbar::-webkit-scrollbar {
+        display: none;
+    }
+}

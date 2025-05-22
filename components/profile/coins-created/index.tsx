@@ -1,0 +1,50 @@
+"use client";
+
+import { Image } from "@nextui-org/react";
+import NextLink from "next/link";
+
+export default function CoinsCreated({ tokens }: { tokens: any[] }) {
+  return (
+    <div className="w-full flex flex-col gap-2">
+      <div className="w-full flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
+          {tokens.map((row) => {
+            return (
+              <div key={row.id} className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <div className="relative m-auto">
+                    <Image
+                      width={0}
+                      height={0}
+                      alt="logo"
+                      src={row.logo}
+                      classNames={{
+                        img: "w-[36px] h-[36px] md:w-[40px] md:h-[40px] rounded-full",
+                        wrapper: "w-[36px] h-[36px] md:w-[40px] md:h-[40px]",
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <div>
+                      {`${row.name.slice(0, 12)} ${row.symbol.slice(0, 6)}`}
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <NextLink
+                      className="text-value_grey text-base font-normal"
+                      href={`/token/${row.address}`}
+                    >
+                      {`[view coin]`}
+                    </NextLink>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
